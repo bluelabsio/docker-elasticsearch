@@ -17,7 +17,8 @@ RUN \
   wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.2.2.tar.gz && \
   tar xvzf elasticsearch-1.2.2.tar.gz && \
   rm -f elasticsearch-1.2.2.tar.gz && \
-  mv /tmp/elasticsearch-1.2.2 /elasticsearch
+  mv /tmp/elasticsearch-1.2.2 /elasticsearch && \
+  /elasticsearch/bin/plugin -install elasticsearch/elasticsearch-cloud-aws/2.2.0
 
 ENV ES_CONF /elasticsearch/config/elasticsearch.yml
 ADD elasticsearch.yml /elasticsearch/config/elasticsearch.yml
