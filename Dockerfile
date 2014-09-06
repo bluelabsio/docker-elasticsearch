@@ -19,6 +19,7 @@ RUN \
   rm -f elasticsearch-1.2.2.tar.gz && \
   mv /tmp/elasticsearch-1.2.2 /elasticsearch
 
+ENV ES_CONF /elasticsearch/config/elasticsearch.yml
 ADD elasticsearch.yml /elasticsearch/config/elasticsearch.yml
 
 VOLUME /data
@@ -27,4 +28,4 @@ WORKDIR /data
 
 EXPOSE 9200 9300
 
-CMD /elasticsearch/bin/elasticsearch
+CMD /elasticsearch/bin/elasticsearch -Des.config=$ES_CONF
