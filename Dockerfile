@@ -20,6 +20,7 @@ RUN \
   mv /tmp/elasticsearch-1.2.2 /elasticsearch && \
   /elasticsearch/bin/plugin -install elasticsearch/elasticsearch-cloud-aws/2.2.0
 
+ENV ES_CONF /elasticsearch/config/elasticsearch.yml
 ADD elasticsearch.yml /elasticsearch/config/elasticsearch.yml
 
 VOLUME /data
@@ -28,4 +29,4 @@ WORKDIR /data
 
 EXPOSE 9200 9300
 
-CMD /elasticsearch/bin/elasticsearch
+CMD /elasticsearch/bin/elasticsearch -Des.config=$ES_CONF
